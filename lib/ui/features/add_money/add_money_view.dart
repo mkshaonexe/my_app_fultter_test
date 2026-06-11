@@ -185,28 +185,32 @@ class AddMoneyView extends StatelessWidget {
   }
 
   Widget _buildMastercardLogo() {
-    return Stack(
-      children: [
-        Container(
-          width: 10,
-          height: 10,
-          decoration: const BoxDecoration(
-            color: Color(0xFFEB001B),
-            shape: BoxShape.circle,
-          ),
-        ),
-        Positioned(
-          left: 5,
-          child: Container(
+    return SizedBox(
+      width: 15,
+      height: 10,
+      child: Stack(
+        children: [
+          Container(
             width: 10,
             height: 10,
-            decoration: BoxDecoration(
-              color: const Color(0xFFF79E1B).withOpacity(0.85),
+            decoration: const BoxDecoration(
+              color: Color(0xFFEB001B),
               shape: BoxShape.circle,
             ),
           ),
-        ),
-      ],
+          Positioned(
+            left: 5,
+            child: Container(
+              width: 10,
+              height: 10,
+              decoration: BoxDecoration(
+                color: const Color(0xFFF79E1B).withOpacity(0.85),
+                shape: BoxShape.circle,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
