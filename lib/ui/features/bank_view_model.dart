@@ -70,7 +70,7 @@ class BankViewModel extends ChangeNotifier {
         merchant: 'Starbucks Coffee',
         date: 'October 17, 09:00 PM',
         amount: -44.80,
-        cashback: '+$1.65',
+        cashback: r'+$1.65',
         icon: Icons.local_cafe_rounded,
       ),
       TransactionModel(
@@ -85,7 +85,7 @@ class BankViewModel extends ChangeNotifier {
         merchant: 'Apple Store',
         date: 'October 12, 02:15 PM',
         amount: -999.00,
-        cashback: '+$30.00',
+        cashback: r'+$30.00',
         icon: Icons.laptop_mac_rounded,
       ),
       TransactionModel(
@@ -93,7 +93,7 @@ class BankViewModel extends ChangeNotifier {
         merchant: 'Uber Eats',
         date: 'October 10, 07:45 PM',
         amount: -32.50,
-        cashback: '+$1.10',
+        cashback: r'+$1.10',
         icon: Icons.delivery_dining_rounded,
       ),
     ];
