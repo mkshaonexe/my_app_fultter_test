@@ -3,35 +3,35 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:my_app_fultter_test/main.dart';
 
 void main() {
-  testWidgets('Navigation and Explore details flow test', (WidgetTester tester) async {
+  testWidgets('Neobank Navigation and UI Render Test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(const MyApp());
 
-    // 1. Verify Home screen elements.
-    expect(find.text('Antigravity'), findsOneWidget);
-    expect(find.text('Hello, World!'), findsOneWidget);
+    // 1. Verify Home Dashboard elements are present.
+    expect(find.text('Good morning, Terry'), findsOneWidget);
+    expect(find.text('Your balance'), findsOneWidget);
+    expect(find.text('Your cards'), findsOneWidget);
+    expect(find.text('Transactions'), findsOneWidget);
 
-    // 2. Tap Explore tab icon in bottom navigation bar.
-    await tester.tap(find.byIcon(Icons.explore_outlined));
+    // 2. Navigate to Map tab
+    await tester.tap(find.byIcon(Icons.map_outlined));
     await tester.pumpAndSettle();
+    expect(find.text('ATM Locator'), findsOneWidget);
 
-    // 3. Verify Explore screen title.
-    expect(find.text('Explore'), findsWidgets);
-    expect(find.text('Stunning Layouts'), findsOneWidget);
-
-    // 4. Tap 'Stunning Layouts' card.
-    await tester.tap(find.text('Stunning Layouts'));
+    // 3. Navigate to Transfer tab
+    await tester.tap(find.byIcon(Icons.swap_horizontal_circle_outlined));
     await tester.pumpAndSettle();
+    expect(find.text('Transfer Funds'), findsOneWidget);
 
-    // 5. Verify Detail screen is visible.
-    expect(find.text('Details'), findsOneWidget);
-    expect(find.text('OVERVIEW'), findsOneWidget);
-
-    // 6. Tap custom back button.
-    await tester.tap(find.byIcon(Icons.arrow_back_ios_new_rounded));
+    // 4. Navigate to Settings tab
+    await tester.tap(find.byIcon(Icons.settings_outlined));
     await tester.pumpAndSettle();
+    expect(find.text('Settings'), findsOneWidget);
 
-    // 7. Verify we are back on Explore feed.
-    expect(find.text('Stunning Layouts'), findsOneWidget);
+    // 5. Navigate to Profile tab
+    await tester.tap(find.text('Profile')); // Profile nav item label
+    await tester.pumpAndSettle();
+    expect(find.text('Personal info'), findsOneWidget);
+    expect(find.text('Account info'), findsOneWidget);
   });
 }
