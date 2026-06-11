@@ -354,6 +354,7 @@ class DashboardView extends StatelessWidget {
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: Row(
+                              mainAxisSize: MainAxisSize.min,
                               children: [
                                 const Icon(
                                   Icons.remove_red_eye_outlined,
@@ -387,28 +388,32 @@ class DashboardView extends StatelessWidget {
   }
 
   Widget _buildMastercardLogo() {
-    return Stack(
-      children: [
-        Container(
-          width: 20,
-          height: 20,
-          decoration: const BoxDecoration(
-            color: Color(0xFFEB001B),
-            shape: BoxShape.circle,
-          ),
-        ),
-        Positioned(
-          left: 10,
-          child: Container(
+    return SizedBox(
+      width: 30,
+      height: 20,
+      child: Stack(
+        children: [
+          Container(
             width: 20,
             height: 20,
-            decoration: BoxDecoration(
-              color: const Color(0xFFF79E1B).withOpacity(0.85),
+            decoration: const BoxDecoration(
+              color: Color(0xFFEB001B),
               shape: BoxShape.circle,
             ),
           ),
-        ),
-      ],
+          Positioned(
+            left: 10,
+            child: Container(
+              width: 20,
+              height: 20,
+              decoration: BoxDecoration(
+                color: const Color(0xFFF79E1B).withOpacity(0.85),
+                shape: BoxShape.circle,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
