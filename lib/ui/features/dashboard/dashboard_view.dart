@@ -20,7 +20,7 @@ class DashboardView extends StatelessWidget {
       listenable: viewModel,
       builder: (context, _) {
         return Scaffold(
-          backgroundColor: AppColors.lightGray,
+          backgroundColor: const Color.fromARGB(223, 235, 240, 240),
           body: SafeArea(
             child: SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
@@ -39,7 +39,9 @@ class DashboardView extends StatelessWidget {
                   _buildTransactionsHeader(context),
                   const SizedBox(height: 16),
                   _buildTransactionsList(context),
-                  const SizedBox(height: 100), // Space for bottom navigation bar
+                  const SizedBox(
+                    height: 100,
+                  ), // Space for bottom navigation bar
                 ],
               ),
             ),
@@ -59,16 +61,16 @@ class DashboardView extends StatelessWidget {
             Text(
               'Good morning, Terry',
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.textPrimary,
-                  ),
+                fontWeight: FontWeight.bold,
+                color: AppColors.textPrimary,
+              ),
             ),
             const SizedBox(height: 2),
             Text(
               'Welcome to Neobank',
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: AppColors.textSecondary,
-                  ),
+              style: Theme.of(
+                context,
+              ).textTheme.bodyMedium?.copyWith(color: AppColors.textSecondary),
             ),
           ],
         ),
@@ -108,10 +110,8 @@ class DashboardView extends StatelessWidget {
   }
 
   Widget _buildBalanceCard(BuildContext context) {
-    final formattedBalance = '\$${viewModel.balance.toStringAsFixed(2).replaceAllMapped(
-          RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
-          (Match m) => '${m[1]},',
-        )}';
+    final formattedBalance =
+        '\$${viewModel.balance.toStringAsFixed(2).replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},')}';
 
     return Container(
       width: double.infinity,
@@ -129,9 +129,9 @@ class DashboardView extends StatelessWidget {
               Text(
                 'Your balance',
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: AppColors.textSecondary,
-                      fontWeight: FontWeight.w500,
-                    ),
+                  color: AppColors.textSecondary,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
               IconButton(
                 icon: Icon(
@@ -149,10 +149,10 @@ class DashboardView extends StatelessWidget {
           Text(
             viewModel.isBalanceVisible ? formattedBalance : '\$ ••••••',
             style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                  fontSize: 38,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: -1.0,
-                ),
+              fontSize: 38,
+              fontWeight: FontWeight.bold,
+              letterSpacing: -1.0,
+            ),
           ),
           const SizedBox(height: 20),
           GestureDetector(
@@ -168,10 +168,10 @@ class DashboardView extends StatelessWidget {
                 child: Text(
                   'Add money',
                   style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                        color: AppColors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    color: AppColors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
@@ -188,9 +188,9 @@ class DashboardView extends StatelessWidget {
         Text(
           'Your cards',
           style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         TextButton.icon(
           onPressed: () {},
@@ -198,9 +198,9 @@ class DashboardView extends StatelessWidget {
           label: Text(
             'New card',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.charcoal,
-                ),
+              fontWeight: FontWeight.bold,
+              color: AppColors.charcoal,
+            ),
           ),
           style: TextButton.styleFrom(
             padding: EdgeInsets.zero,
@@ -247,7 +247,7 @@ class DashboardView extends StatelessWidget {
                   color: AppColors.charcoal.withOpacity(0.15),
                   blurRadius: 10,
                   offset: const Offset(0, 4),
-                )
+                ),
               ]
             : null,
       ),
@@ -281,11 +281,7 @@ class DashboardView extends StatelessWidget {
             ),
           // Background lines pattern for Dark card
           if (isDark)
-            Positioned.fill(
-              child: CustomPaint(
-                painter: CardLinesPainter(),
-              ),
-            ),
+            Positioned.fill(child: CustomPaint(painter: CardLinesPainter())),
           Padding(
             padding: const EdgeInsets.all(24),
             child: Column(
@@ -428,18 +424,18 @@ class DashboardView extends StatelessWidget {
         Text(
           'Transactions',
           style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         TextButton(
           onPressed: () {},
           child: Text(
             'See all',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.charcoal,
-                ),
+              fontWeight: FontWeight.bold,
+              color: AppColors.charcoal,
+            ),
           ),
           style: TextButton.styleFrom(
             padding: EdgeInsets.zero,
@@ -459,7 +455,8 @@ class DashboardView extends StatelessWidget {
       itemBuilder: (context, index) {
         final tx = viewModel.transactions[index];
         final isNegative = tx.amount < 0;
-        final amountText = '${isNegative ? '-' : '+'}\$${tx.amount.abs().toStringAsFixed(2)}';
+        final amountText =
+            '${isNegative ? '-' : '+'}\$${tx.amount.abs().toStringAsFixed(2)}';
 
         return Padding(
           padding: const EdgeInsets.only(bottom: 16),
@@ -471,11 +468,7 @@ class DashboardView extends StatelessWidget {
                   color: AppColors.white,
                   borderRadius: BorderRadius.circular(16),
                 ),
-                child: Icon(
-                  tx.icon,
-                  color: AppColors.charcoal,
-                  size: 24,
-                ),
+                child: Icon(tx.icon, color: AppColors.charcoal, size: 24),
               ),
               const SizedBox(width: 16),
               Expanded(
@@ -485,16 +478,16 @@ class DashboardView extends StatelessWidget {
                     Text(
                       tx.merchant,
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     const SizedBox(height: 2),
                     Text(
                       tx.date,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: AppColors.textSecondary,
-                            fontSize: 12,
-                          ),
+                        color: AppColors.textSecondary,
+                        fontSize: 12,
+                      ),
                     ),
                   ],
                 ),
@@ -505,9 +498,9 @@ class DashboardView extends StatelessWidget {
                   Text(
                     amountText,
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.textPrimary,
-                        ),
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.textPrimary,
+                    ),
                   ),
                   if (tx.cashback != null) ...[
                     const SizedBox(height: 4),
@@ -523,10 +516,10 @@ class DashboardView extends StatelessWidget {
                       child: Text(
                         tx.cashback!,
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                              color: const Color(0xFF7CA018),
-                              fontWeight: FontWeight.bold,
-                              fontSize: 10,
-                            ),
+                          color: const Color(0xFF7CA018),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 10,
+                        ),
                       ),
                     ),
                   ],
