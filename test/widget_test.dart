@@ -26,7 +26,7 @@ void main() {
     // 4. Navigate to Settings tab
     await tester.tap(find.byIcon(Icons.settings_outlined));
     await tester.pumpAndSettle();
-    expect(find.text('Settings'), findsOneWidget);
+    expect(find.text('Settings'), findsNWidgets(2));
 
     // 5. Navigate to Profile tab
     await tester.tap(find.text('Profile')); // Profile nav item label
