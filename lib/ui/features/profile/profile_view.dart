@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../domain/models.dart';
 import '../../core/app_theme.dart';
-import '../features/bank_view_model.dart';
+import '../bank_view_model.dart';
 
 class ProfileView extends StatelessWidget {
   final BankViewModel viewModel;
