@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../domain/models.dart';
 import '../../core/app_theme.dart';
-import '../features/bank_view_model.dart';
+import '../bank_view_model.dart';
 
 class AddMoneyView extends StatelessWidget {
   final BankViewModel viewModel;
@@ -237,7 +237,7 @@ class AddMoneyView extends StatelessWidget {
     return Column(
       children: options.map((opt) {
         return Padding(
-          padding: const EdgeInsets.bottom: 12,
+          padding: const EdgeInsets.only(bottom: 12),
           child: GestureDetector(
             onTap: opt['action'] as VoidCallback,
             child: Container(
