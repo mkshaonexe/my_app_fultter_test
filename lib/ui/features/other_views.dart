@@ -315,7 +315,7 @@ class TransferView extends StatelessWidget {
 
   Widget _buildMethodRow(BuildContext context, IconData icon, String title, String subtitle) {
     return Padding(
-      padding: const EdgeInsets.bottom: 12,
+      padding: const EdgeInsets.only(bottom: 12),
       child: Container(
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
@@ -569,19 +569,21 @@ class _SettingsViewState extends State<SettingsView> {
   Widget _buildSectionHeader(String title) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 12, top: 8),
-      style: TextStyle(
-        fontSize: 12,
-        fontWeight: FontWeight.bold,
-        letterSpacing: 1.0,
-        color: AppColors.textSecondary.withOpacity(0.8),
+      child: Text(
+        title.toUpperCase(),
+        style: TextStyle(
+          fontSize: 12,
+          fontWeight: FontWeight.bold,
+          letterSpacing: 1.0,
+          color: AppColors.textSecondary.withOpacity(0.8),
+        ),
       ),
-      child: Text(title.toUpperCase()),
     );
   }
 
   Widget _buildSwitchRow(String title, bool val, ValueChanged<bool> onChange) {
     return Padding(
-      padding: const EdgeInsets.bottom: 12,
+      padding: const EdgeInsets.only(bottom: 12),
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
         decoration: BoxDecoration(
@@ -606,7 +608,7 @@ class _SettingsViewState extends State<SettingsView> {
 
   Widget _buildSettingLink(IconData icon, String title) {
     return Padding(
-      padding: const EdgeInsets.bottom: 12,
+      padding: const EdgeInsets.only(bottom: 12),
       child: Container(
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
