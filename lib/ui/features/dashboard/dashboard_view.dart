@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../domain/models.dart';
-import '../core/app_theme.dart';
-import '../features/bank_view_model.dart';
-import '../features/add_money/add_money_view.dart';
+import '../../core/app_theme.dart';
+import '../bank_view_model.dart';
+import '../add_money/add_money_view.dart';
 
 class DashboardView extends StatelessWidget {
   final BankViewModel viewModel;
@@ -453,7 +453,7 @@ class DashboardView extends StatelessWidget {
         final amountText = '${isNegative ? '-' : '+'}\$${tx.amount.abs().toStringAsFixed(2)}';
 
         return Padding(
-          padding: const EdgeInsets.bottom: 16,
+          padding: const EdgeInsets.only(bottom: 16),
           child: Row(
             children: [
               Container(
