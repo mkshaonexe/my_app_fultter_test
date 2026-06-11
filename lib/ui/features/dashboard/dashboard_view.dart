@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../domain/models.dart';
+import '../../../domain/models.dart';
 import '../../core/app_theme.dart';
 import '../bank_view_model.dart';
 import '../add_money/add_money_view.dart';
