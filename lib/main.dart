@@ -174,12 +174,22 @@ class _MainNavigationShellState extends State<MainNavigationShell> {
                   width: 2.0,
                 ),
               ),
-              child: const CircleAvatar(
-                radius: 11,
-                backgroundImage: NetworkImage(
-                  'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200',
+              child: SizedBox(
+                width: 22,
+                height: 22,
+                child: ClipOval(
+                  child: Image.network(
+                    'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200',
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return const Icon(
+                        Icons.person_rounded,
+                        size: 14,
+                        color: AppColors.charcoal,
+                      );
+                    },
+                  ),
                 ),
-                backgroundColor: AppColors.neonLime,
               ),
             ),
             const SizedBox(height: 4),
